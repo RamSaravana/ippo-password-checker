@@ -1,0 +1,13 @@
+const findMinimumDifference = (array) => {
+    let len = array.length;
+    let sum = array.reduce((a, b) => a + b)
+    return recursiveSumCalculation(array, len, 0, sum);
+}
+const recursiveSumCalculation = (array, length, calculatedValue, total) => {
+    if (length == 0)
+        return Math.abs((total - calculatedValue) - calculatedValue);
+    return Math.min(recursiveSumCalculation(array, length - 1, calculatedValue + array[length - 1], total),
+    recursiveSumCalculation(array, length - 1, calculatedValue, total));
+}
+let testArray = [4, 5, 6, 3, 12, 15, 17];
+findMinimumDifference(testArray)
